@@ -2,19 +2,17 @@ import React, {useState} from "react";
 
 
 function App() {
-  const [count, setCount] = useState(4)
-  function decrementCount(){
-    setCount(count -1);
-  }
-  function incrementCount(){
-    setCount(count +2)
-  }
+  const [resourceType, setResourceType] = useState('posts')
+ 
   return (
+    <>
   <div>
-   <button onClick={decrementCount}>-</button>
-   <span>{count}</span>
-   <button onClick={incrementCount}>+</button>
+   <button onClick={()=> setResourceType('posts')}>Posts</button>
+   <button onClick={()=> setResourceType('users')}>Users</button>
+   <button onClick={()=> setResourceType('comments')}>Comments</button>
   </div>
+  <h1>{resourceType}</h1>
+  </>
   );
 }
 
