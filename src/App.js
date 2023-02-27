@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 
 function App() {
   const [resourceType, setResourceType] = useState('posts')
- 
+ console.log('render')
+  useEffect(() => {
+console.log('resource type changed')
+  }, [resourceType])
   return (
     <>
   <div>
