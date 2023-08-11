@@ -1,21 +1,23 @@
-import React, {useState, useEffect} from "react";
-
+import React, { useState, useEffect } from "react";
 
 function App() {
-  const [resourceType, setResourceType] = useState('posts')
- console.log('render')
+  const [resourceType, setResourceType] = useState("posts");
+  //  console.log('render')
   useEffect(() => {
-console.log('resource type changed')
-  }, [resourceType])
+    // console.log("resource type changed");
+    fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  }, [resourceType]);
   return (
     <>
-  <div>
-   <button onClick={()=> setResourceType('posts')}>Posts</button>
-   <button onClick={()=> setResourceType('users')}>Users</button>
-   <button onClick={()=> setResourceType('comments')}>Comments</button>
-  </div>
-  <h1>{resourceType}</h1>
-  </>
+      <div>
+        <button onClick={() => setResourceType("posts")}>Posts</button>
+        <button onClick={() => setResourceType("users")}>Users</button>
+        <button onClick={() => setResourceType("comments")}>Comments</button>
+      </div>
+      <h1>{resourceType}</h1>
+    </>
   );
 }
 
